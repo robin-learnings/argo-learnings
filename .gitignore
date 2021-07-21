@@ -1,0 +1,12 @@
+.idea/*
+*.iml
+
+.envrc
+local_kube_config.yaml
+local_kube_config.yaml.eksctl.lock
+
+hidden.csv
+credentials.csv
+
+.DS_Store
+node_modules/
