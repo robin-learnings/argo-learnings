@@ -3,14 +3,12 @@ kind: Application
 metadata:
   name: argo-learning-bar-app
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: argo-learning-project
   source:
-    repoURL: git://github.com/RobinNagpal/argo-learning-bar-app.git
+    repoURL: git@github.com:RobinNagpal/argo-learning-main-v2.git
     targetRevision: HEAD
-    path: .
+    path: k8s/bar-app
   destination:
     server: https://kubernetes.default.svc
     namespace: default

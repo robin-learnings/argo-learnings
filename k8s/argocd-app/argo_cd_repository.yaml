@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github-repo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+    app.kubernetes.io/part-of: argocd
+stringData:
+  url: git@github.com:RobinNagpal/argo-learning-main-v2.git
+  sshPrivateKey: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    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
+    -----END OPENSSH PRIVATE KEY-----
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  repositories: |
+    - url: git@github.com:RobinNagpal/argo-learning-main-v2.git
+      sshPrivateKeySecret:
+        name: github-repo
+        key: sshPrivateKey

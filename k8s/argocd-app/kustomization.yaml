@@ -1,4 +1,5 @@
 resources:
+  - argo_cd_repository.yaml
   - argo_project.yaml
   - argo_foo_application.yaml
   - argo_bar_application.yaml

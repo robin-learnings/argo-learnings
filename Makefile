@@ -47,7 +47,7 @@ deploy_ingress_controller:
 
 argo_install:
 	kubectl create namespace argocd
-	kubectl apply -n argocd -f k8s/argocd_install/argocd-install.yaml
+	kubectl apply -n argocd -f k8s/argocd-install/argocd-install.yaml
 
 argo_port_fwd:
 	kubectl port-forward svc/argocd-server -n argocd 8080:443
@@ -56,7 +56,10 @@ argo_get_pwd:
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
 
 argo_create_project:
-	kustomize build k8s/argocd_app | kubectl apply -f -
+	kustomize build k8s/argocd-app | kubectl apply -f -
+
+argo_delete_project:
+	kustomize build k8s/argocd-app | kubectl delete -f -
 
 
 just_do_it:
