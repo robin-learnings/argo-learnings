@@ -5,22 +5,36 @@ metadata:
   namespace: argocd
 spec:
   generators:
+#    - list:
+#        # Parameters are generated based on this cluster list, to be substituted
+#        # into the template below.
+#        elements:
+#          - repository: argo-learnings
+#            url: git@github.com:robin-learnings/argo-learnings.git
+#            branch: something-something-1
+#          - repository: argo-learnings
+#            url: git@github.com:robin-learnings/argo-learnings.git
+#            branch: something-something-2
     - scmProvider:
+        requeueAfterSeconds: 30
         github:
           # The GitHub organization to scan.
-          organization: RobinNagpal
+          organization: robin-learnings
           allBranches: true
+          tokenRef:
+            secretName: github-token
+            key: token
         filters:
           # Include any repository starting with "myapp" AND including a Kustomize config AND labeled with "deploy-ok" ...
-          - repositoryMatch: ^argo-learning-main-v2
+          - repositoryMatch: argo-learnings
             pathsExist: [ k8s ]
-            labelMatch: deploy-ok
+#            labelMatch: deploy-ok
   template:
     metadata:
-      name: '{{ repository }} - {{ branch }}'
+      name: '{{ repository }}-{{ branch }}'
     spec:
       source:
-        repoURL: '{{ url }}'
+        repoURL: git@github.com:RobinNagpal/argo-learning-main-v2.git
         targetRevision: '{{ branch }}'
         path: k8s/bar-app
       project: argo-learning-project

@@ -49,7 +49,7 @@ deploy_ingress_controller:
 
 argo_install:
 	kubectl create namespace argocd
-	kubectl apply -n argocd -f k8s/argocd-install/argocd-install.yaml
+	kustomize build k8s/argocd-install | kubectl apply  -n argocd -f -
 
 argo_port_fwd:
 	kubectl port-forward svc/argocd-server -n argocd 8080:443
@@ -72,3 +72,7 @@ just_do_it:
 	make create_cluster
 	make argo_install
 	make argo_create_project
+
+# make create_secret namespace=jomo name=jomo-secret key=secret-key value=secret-value
+create_secret:
+	kubectl --namespace $(namespace) create secret generic $(name) --from-literal=$(key)=$(value) -o yaml --dry-run=client

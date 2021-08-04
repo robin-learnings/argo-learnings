@@ -3,3 +3,5 @@ resources:
   - argo_project.yaml
   - argo_foo_application.yaml
   - argo_bar_application.yaml
+  - argo_github.secret.yaml
+  - argo_appset.yaml
