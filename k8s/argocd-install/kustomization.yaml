@@ -1,0 +1,3 @@
+resources:
+  - argocd-install.yaml
+  - argo-applicationset.yaml

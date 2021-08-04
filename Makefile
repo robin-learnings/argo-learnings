@@ -1,3 +1,5 @@
+DATE = $(shell date +%FT%T%Z)
+
 create_cluster:
 	eksctl create cluster -f cluster.yaml
 
@@ -61,6 +63,10 @@ argo_create_project:
 argo_delete_project:
 	kustomize build k8s/argocd-app | kubectl delete -f -
 
+argo_update_pwd:
+	# bcrypt(password)=$2a$10$rRyBsGSHK6.uc8fntPwVIuLVHgsAhAX7TcdrqW/RADU0uh7CaChLa
+	kubectl -n argocd patch secret argocd-secret \
+	-p '{"stringData": { "admin.password": "$2a$10$rpz/qiEb0epL2Qfsr0V2Re2cKwE0i2B.jr9oyPfSV8fyWpt2Yja/e", "admin.passwordMtime": "$(DATE)"}}'
 
 just_do_it:
 	make create_cluster
