@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
     app.kubernetes.io/part-of: argocd
 stringData:
-  url: git@github.com:RobinNagpal/argo-learning-main-v2.git
+  url: git@github.com:robin-learnings/argo-learnings.git
   sshPrivateKey: |
     -----BEGIN OPENSSH PRIVATE KEY-----
     b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
@@ -59,7 +59,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   repositories: |
-    - url: git@github.com:RobinNagpal/argo-learning-main-v2.git
+    - url: git@github.com:robin-learnings/argo-learnings.git
       sshPrivateKeySecret:
         name: github-repo
         key: sshPrivateKey

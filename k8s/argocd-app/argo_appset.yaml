@@ -34,7 +34,7 @@ spec:
       name: '{{ repository }}-{{ branch }}'
     spec:
       source:
-        repoURL: git@github.com:RobinNagpal/argo-learning-main-v2.git
+        repoURL: git@github.com:robin-learnings/argo-learnings.git
         targetRevision: '{{ branch }}'
         path: k8s/bar-app
       project: argo-learning-project
